@@ -11,16 +11,14 @@ var money = +prompt("Ваш буджет на месяц?", ""),
 var appData = {
     budget: money,
     timeData: [time],
-    expenses1: {
-        [quastion1]: quastion2
-    },
-    expenses2: {
-        [quastion3]: quastion4
-    },
-    optionalExpenses: null,
+    expenses: {},
+    optionalExpenses: {},
     income: [],
     savings: false
 };
+
+appData.expenses[quastion1] = quastion2;
+appData.expenses[quastion3] = quastion4;
 
 var budgetDay = appData.budget/30;
 alert ("Ваш дневной бюджет составит:" + budgetDay);
