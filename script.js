@@ -1,25 +1,42 @@
 "use strict";
 
-let numberOfFilms = +prompt ('Сколько фидьмов вы уже посмотрели?');
+let numberOfFilms = +prompt("Сколько фидьмов вы уже посмотрели?");
 
 const personalMovieDB = {
-        count: numberOfFilms,
-        movies: {},
-        actors: {},
-        genres: [],
-        privat: false
-    };
+  count: numberOfFilms,
+  movies: {},
+  actors: {},
+  genres: [],
+  privat: false,
+};
 
-let nameFilm1 = prompt ('Один из последних просмотренных фильмов?', ''),
-    raitFilm1 = +prompt ('На сколько оцените его?', ''),
-    nameFilm2 = prompt ('Один из последних просмотренных фильмов?', ''),
-    raitFilm2 = +prompt ('На сколько оцените его?', '');
+for (let i = 0; i < 2; i++) {
+  let nameFilm = prompt("Один из последних просмотренных фильмов?", ""),
+    raitFilm = +prompt("На сколько оцените его?", "");
+  if (
+    nameFilm != "" &&
+    raitFilm != "" &&
+    nameFilm != null &&
+    raitFilm != null &&
+    nameFilm.length < 50
+  ) {
+    personalMovieDB.movies[nameFilm] = raitFilm;
+  } else {
+    i--;
+  }
+}
 
-    personalMovieDB.movies[nameFilm1] = raitFilm1;
-    personalMovieDB.movies[nameFilm2] = raitFilm2; 
-    console.log(personalMovieDB);
-    
+if (personalMovieDB.count < 10 && personalMovieDB.count > 0) {
+  alert("Просмотрено довольно мало фильмов");
+} else if (personalMovieDB.count >= 10 && personalMovieDB.count <= 30) {
+  alert("Вы классический зритель");
+} else if (personalMovieDB.count >= 30) {
+  alert("Вы киноман!");
+} else {
+    alert("Произошла ошибка!");
+}
 
+console.log(personalMovieDB);
 
 /*let money = +prompt("Ваш буджет на месяц?", ""),
     time = prompt("Введите дату в формате YYYY-MM-DD", ""),
